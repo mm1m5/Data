@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int binary_search_algo(int array[], int size, int target); //prototype
+
+int main(void)
+{
+    srand(time(0)); //random num for target
+
+    int array[10]; //array size
+    int size = 10;
+
+    printf("Array: ");
+    for (int i = 0; i < size; i++)
+    {
+        array[i] = i + 1; //fill with 1-10
+        printf("%i ", array[i]); //print array
+    }
+    printf("\n");
+
+    int target = array[rand() % size]; //randomly pick an element from array
+    printf("Target: %d\n", target);
+
+    int result = binary_search_algo(array, size, target); //start binary search
+
+    if (result != -1)
+    {
+        printf("Element %d found at index %d\n", target, result);
+    }
+    else
+    {
+        printf("Element %d not found in array\n", target);
+    }
+    return 0;
+}
+
+int binary_search_algo(int array[], int size, int target)
+{
+    int left = 0, right = size - 1; //initialize left and right pointers
+
+    while (left <= right)
+    {
+        int mid = left + (right - left) / 2; //setting mid search
+
+        if (array[mid] == target) //check if at mid
+        {
+            return mid;
+        }
+
+        if (array[mid] < target) //if mid is less than target, search right
+        {
+            left = mid + 1; //left pointer starts at mid+1
+        }
+        else
+        {
+            right = mid - 1; //right pointer is at mid-1, search left half
+        }
+    }
+    return -1; //invalid, target not found
+}
