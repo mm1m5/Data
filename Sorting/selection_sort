@@ -1,0 +1,60 @@
+#include <cs50.h>
+#include <stdio.h>
+
+#define SIZE 6 //size of array
+void selection_sort(int array[], int n); //prototype
+
+int main(void)
+{
+    int array[SIZE] = {4, 9, 2, 1, 6, 8}; //unsorted array
+    printf("Unsorted array: [");
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        printf("%i", array[i]); //print elements of unsorted array
+        if (i < SIZE - 1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+
+    selection_sort(array, SIZE); //call selection sort funct
+
+    printf("Sorted array: [");
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        printf("%i", array[i]); //print elements sorted
+        if (i < SIZE - 1)
+        {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+
+    return 0;
+}
+
+void selection_sort(int array[], int n)
+{
+    //traverse through all elements in the array
+    for (int i = 0; i < n - 1; i++)
+    {
+        int smallest = i; //current element is the smallest
+        for (int j = i + 1; j < n; j++) //cheks the rest of the elements
+        {
+            if (array[j] < array[smallest]) //if current element[j] is smaller than element stored in smallest variable
+            {
+                smallest = j;  //update the smallest variable to the current element in [j]
+            }
+        }
+
+        if (smallest != i) //swap the smallest num with the first element of the unsorted array
+        {
+            int current_num = array[i]; //store the current element in a temp variable
+            array[i] = array[smallest]; //place the smallest element at the current position [i]
+            array[smallest] = current_num; //move element to the position of the smallest
+        }
+    }
+}
