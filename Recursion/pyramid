@@ -1,0 +1,26 @@
+#include <cs50.h>
+#include <stdio.h>
+
+void draw(int n); //prototype
+
+int main (void)
+{
+    int height = get_int("Height: "); //get user's input
+    draw(height); //call funct
+}
+
+void draw(int n) //recursive funct
+{
+    if (n <= 0) //base case
+    {
+        return;
+    }
+
+    draw(n - 1); //recursive case
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("#");
+    }
+    printf("\n");
+}
