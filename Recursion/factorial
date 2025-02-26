@@ -1,0 +1,33 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int fact(int n); //prototype
+
+int main(void)
+{
+    //get user's input
+    int number;
+
+    do
+    {
+        number = get_int("Number: ");
+    }
+    while (number < 0); //keep asking while number is less than 0
+
+    //call factorial funct
+    int result = fact(number);
+
+    printf("Factorial of %i is %i.\n", number, result);
+}
+
+int fact(int n) //factorial funct
+{
+    if (n == 0) //base case
+    {
+        return 1;
+    }
+    else //recursive case
+     {
+        return n * fact(n - 1);
+     }
+}
