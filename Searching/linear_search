@@ -1,0 +1,20 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int numbers[] = {5, 10, 1, 62, 100, 21, 9}; //array
+
+    int n = get_int("Number: "); //get user's input
+
+    for (int i = 0; i < 7; i++) //loop through the array
+    {
+        if (numbers[i] == n) //if element in array equals user input
+        {
+            printf("Found\n"); //print
+            return 0;
+        }
+    }
+    printf("Not Found\n"); //else not in array
+    return 1;
+}
